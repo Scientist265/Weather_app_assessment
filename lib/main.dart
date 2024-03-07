@@ -1,11 +1,15 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_app_riverpod/view/home_page.dart';
 import 'package:weather_app_riverpod/application/providers.dart';
+import 'package:weather_app_riverpod/view/home_screen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+  );
   runApp(
     const ProviderScope(
       child: MyWeatherApp(),
@@ -18,9 +22,12 @@ class MyWeatherApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xff081b25),
+      ),
+      home: const HomeScreen(),
     );
   }
 }

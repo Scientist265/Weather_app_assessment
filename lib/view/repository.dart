@@ -1,39 +1,10 @@
-// import 'package:flutter/material.dart';
-// import 'package:intl/intl.dart';
-// import 'package:weather/weather.dart';
-// import 'package:weather_app_riverpod/constants/app_string.dart';
+//    import 'package:flutter/material.dart';
+// import 'package:weather_app_riverpod/models/weather.dart';
 
-// class HomePage extends StatefulWidget {
-//   const HomePage({super.key});
-
-//   @override
-//   State<HomePage> createState() => _HomePageState();
-// }
-
-// class _HomePageState extends State<HomePage> {
-//   final WeatherFactory _wf = WeatherFactory(apikey);
-//   Weather? _weather;
-
-//   @override
-//   void initState() {
-//     _wf.currentWeatherByCityName("Ile-Ife").then((weather) {
-//       setState(() {
-//         _weather = weather;
-//       });
-//     });
-
-//     super.initState();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: _buildUi(),
-//     );
-//   }
-
-//   Widget _buildUi() {
-//     if (_weather == null) {
+// Weather? weather;
+ 
+//  Widget buildUi(context) {
+//     if (weather == null) {
 //       return const Center(
 //         child: CircularProgressIndicator(),
 //       );
@@ -54,7 +25,7 @@
 //           SizedBox(
 //             height: MediaQuery.sizeOf(context).height * 0.01,
 //           ),
-//           _weathericon(),
+//           weathericon(),
 //           _currentTemp(),
 //           SizedBox(
 //             height: MediaQuery.sizeOf(context).height * 0.01,
@@ -67,13 +38,13 @@
 
 //   Widget _locationHeader() {
 //     return Text(
-//       _weather?.areaName ?? "",
+//       weather?.areaName ?? "",
 //       style: const TextStyle(fontSize: 20),
 //     );
 //   }
 
 //   Widget _dateTimeInfo() {
-//     DateTime now = _weather!.date!;
+//     DateTime now = weather!.date!;
 //     return Column(
 //       children: [
 //         Text(
@@ -102,7 +73,7 @@
 //     );
 //   }
 
-//   Widget _weathericon() {
+//   Widget weathericon() {
 //     return Column(
 //       mainAxisSize: MainAxisSize.min,
 //       mainAxisAlignment: MainAxisAlignment.center,
@@ -113,12 +84,12 @@
 //           decoration: BoxDecoration(
 //             image: DecorationImage(
 //               image: NetworkImage(
-//                   "http://openweathermap.org/img/wn/${_weather?.weatherIcon}@4x.png"),
+//                   "http://openweathermap.org/img/wn/${weather?.weatherIcon}@4x.png"),
 //             ),
 //           ),
 //         ),
 //         Text(
-//           _weather?.weatherDescription ?? "",
+//           weather?.weatherDescription ?? "",
 //           style: const TextStyle(fontSize: 17),
 //         )
 //       ],
@@ -127,7 +98,7 @@
 
 //   Widget _currentTemp() {
 //     return Text(
-//       "${_weather?.temperature?.celsius?.toStringAsFixed(0)}° C",
+//       "${weather?.temperature?.celsius?.toStringAsFixed(0)}° C",
 //       style: const TextStyle(
 //         fontSize: 18,
 //       ),
@@ -154,14 +125,14 @@
 //             crossAxisAlignment: CrossAxisAlignment.center,
 //             children: [
 //               Text(
-//                 "Max: ${_weather?.tempMax?.celsius?.toStringAsFixed(0)}° C",
+//                 "Max: ${weather?.tempMax?.celsius?.toStringAsFixed(0)}° C",
 //                 style: const TextStyle(
 //                   fontSize: 17,
 //                   color: Colors.white,
 //                 ),
 //               ),
 //               Text(
-//                 "Max: ${_weather?.tempMin?.celsius?.toStringAsFixed(0)}° C",
+//                 "Max: ${weather?.tempMin?.celsius?.toStringAsFixed(0)}° C",
 //                 style: const TextStyle(
 //                   fontSize: 17,
 //                   color: Colors.white,
@@ -175,14 +146,14 @@
 //             crossAxisAlignment: CrossAxisAlignment.center,
 //             children: [
 //               Text(
-//                 "Wind: ${_weather?.windSpeed?.toStringAsFixed(0)}m/s",
+//                 "Wind: ${weather?.windSpeed?.toStringAsFixed(0)}m/s",
 //                 style: const TextStyle(
 //                   fontSize: 17,
 //                   color: Colors.white,
 //                 ),
 //               ),
 //               Text(
-//                 "Humidity: ${_weather?.humidity?.toStringAsFixed(0)}%",
+//                 "Humidity: ${weather?.humidity?.toStringAsFixed(0)}%",
 //                 style: const TextStyle(
 //                   fontSize: 17,
 //                   color: Colors.white,
